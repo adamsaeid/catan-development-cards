@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   get '/players/:player_id', to: 'players#show'
   get '/players', to: 'players#index'
+
+  post '/players/:player_id/play_card', to: 'players#play_card'
 end

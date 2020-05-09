@@ -4,6 +4,11 @@ class PlayersController < ApplicationController
     drawn_card.update_attributes(player_id: params['player_id'])
   end
 
+  def play_card
+    card = Card.find(params['card_id'])
+    card.update_attributes(played_at: Time.now)
+  end
+
   def show
     @player = Player.find(params['player_id'])
 
