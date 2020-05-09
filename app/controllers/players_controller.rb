@@ -22,7 +22,7 @@ class PlayersController < ApplicationController
 
   def index
     authenticate_or_request_with_http_basic do |name, password|
-      name == 'admin' && password == 'bossman'
+      name == 'admin' && password == 'tetriscookie'
     end
 
     @players = Player.all
