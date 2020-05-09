@@ -1,0 +1,10 @@
+<div class='player-list'>
+  <% @players.each do |player| %>
+    <div class="player-list__player">
+      <span class="player-list__player-name">
+        <%= player.name %>
+      </span>
+      <%= button_to "Draw", { action: "draw", player_id: player.id }  %>
+    </div>
+  <% end %>
+</div>
