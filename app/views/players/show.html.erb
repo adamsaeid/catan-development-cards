@@ -1,5 +1,5 @@
 <h1><%= @player.name %></h1>
-<% @player.cards.each do |card| %>
+<% @player.cards.where(played_at: nil).each do |card| %>
  <h2><%= card.name %></h2>
  <%= image_tag(card.image_url, width: 100) %>
  <%= button_to "Play", { action: "play_card", card_id: card.id }, data: { confirm: 'Do you want to play this? It will reveal it to everybody!' }  %>

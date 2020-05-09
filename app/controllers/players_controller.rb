@@ -12,6 +12,8 @@ class PlayersController < ApplicationController
   def show
     @player = Player.find(params['player_id'])
 
+    @played_cards = Card.where.not(played_at: nil)
+
     authenticate_or_request_with_http_basic do |name, password|
       name == @player.name && password == @player.password
     end

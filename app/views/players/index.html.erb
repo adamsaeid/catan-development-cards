@@ -8,3 +8,15 @@
     </div>
   <% end %>
 </div>
+
+<h2>Played cards: </h2>
+<% Card.where.not(played_at: nil).order(played_at: :desc).each do |card| %>
+  <div>
+    <p><%= card.name %></p>
+    <%= image_tag(card.image_url, width: 100) %>
+    <p><%= Player.find(card.player_id).name %></p>
+    <p><%= card.played_at %></p>
+    <p>==========================</p>
+  </div>
+
+<% end %>
