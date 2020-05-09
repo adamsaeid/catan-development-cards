@@ -21,6 +21,10 @@ class PlayersController < ApplicationController
   end
 
   def index
+    authenticate_or_request_with_http_basic do |name, password|
+      name == 'admin' && password == 'bossman'
+    end
+
     @players = Player.all
   end
 end
