@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200509175724) do
+ActiveRecord::Schema.define(version: 20200515223111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,13 @@ ActiveRecord::Schema.define(version: 20200509175724) do
   create_table "players", force: :cascade do |t|
     t.string   "name"
     t.string   "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "brick_count"
+    t.integer  "lumber_count"
+    t.integer  "ore_count"
+    t.integer  "wool_count"
+    t.integer  "grain_count"
   end
 
   add_foreign_key "cards", "players"
