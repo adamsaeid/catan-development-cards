@@ -1,62 +1,65 @@
 <div class='player-list'>
-  <% @players.each do |player| %>
-    <div class="player-list__player">
-      <span class="player-list__player-name">
-        <%= player.name %>
-      </span>
-      <%= button_to "Draw", { action: "draw", player_id: player.id }  %>
-
-      <%= form_tag("/players/#{player.id}/give", method: 'post', class: 'player-list__resource-form') do %>
-        <div>
+  <div class='player-list__resources'>
+    <% @players.each do |player| %>
+      <div class="player-list__player">
+        <span class="player-list__player-name">
+          <%= player.name %>
+        </span>
+        <%= button_to "Draw", { action: "draw", player_id: player.id }  %>
+        <%= form_tag("/players/#{player.id}/give", method: 'post', class: 'player-list__resource-form') do %>
           <div>
-            <%= label_tag(:brick, 'Brick:', class: 'player-list__resource-label') %>
-            <%= number_field_tag(:brick, 0, class: 'player-list__resource-field') %>
+            <div>
+              <%= label_tag(:brick, 'Brick:', class: 'player-list__resource-label') %>
+              <%= number_field_tag(:brick, 0, class: 'player-list__resource-field') %>
+            </div>
+            <div>
+              <%= label_tag(:grain, 'Grain:', class: 'player-list__resource-label') %>
+              <%= number_field_tag(:grain, 0, class: 'player-list__resource-field') %>
+            </div>
+            <div>
+              <%= label_tag(:lumber, 'Lumber:', class: 'player-list__resource-label') %>
+              <%= number_field_tag(:lumber, 0, class: 'player-list__resource-field') %>
+            </div>
+            <div>
+              <%= label_tag(:ore, 'Ore:', class: 'player-list__resource-label') %>
+              <%= number_field_tag(:ore, 0, class: 'player-list__resource-field') %>
+            </div>
+            <div>
+              <%= label_tag(:wool, 'Wool:', class: 'player-list__resource-label') %>
+              <%= number_field_tag(:wool, 0, class: 'player-list__resource-field') %>
+            </div>
           </div>
           <div>
-            <%= label_tag(:grain, 'Grain:', class: 'player-list__resource-label') %>
-            <%= number_field_tag(:grain, 0, class: 'player-list__resource-field') %>
+            <%= submit_tag('Give/Take resources', data: { disable_with: false }, class: 'player-list__give-button' ) %>
+            <%= submit_tag('Clear', data: { disable_with: false }, type: 'reset', class: 'player-list__give-button' ) %>
           </div>
-          <div>
-            <%= label_tag(:lumber, 'Lumber:', class: 'player-list__resource-label') %>
-            <%= number_field_tag(:lumber, 0, class: 'player-list__resource-field') %>
-          </div>
-          <div>
-            <%= label_tag(:ore, 'Ore:', class: 'player-list__resource-label') %>
-            <%= number_field_tag(:ore, 0, class: 'player-list__resource-field') %>
-          </div>
-          <div>
-            <%= label_tag(:wool, 'Wool:', class: 'player-list__resource-label') %>
-            <%= number_field_tag(:wool, 0, class: 'player-list__resource-field') %>
-          </div>
-        </div>
-        <div>
-          <%= submit_tag('Give/Take resources', data: { disable_with: false }, class: 'player-list__give-button' ) %>
-          <%= submit_tag('Clear', data: { disable_with: false }, type: 'reset', class: 'player-list__give-button' ) %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
-<div>
-  <h2>Bank</h2>
-  <ul>
-    <li>Brick: <%= @brick_left_in_bank %></li>
-    <li>Grain: <%= @grain_left_in_bank %></li>
-    <li>Lumber: <%= @lumber_left_in_bank %></li>
-    <li>Ore: <%= @ore_left_in_bank %></li>
-    <li>Wool: <%= @wool_left_in_bank %></li>
-  </ul>
-</div>
-
-<h2>Played cards: </h2>
-<% Card.where.not(played_at: nil).order(played_at: :desc).each do |card| %>
-  <div>
-    <p><%= card.name %></p>
-    <%= image_tag(card.image_url, width: 100) %>
-    <p><%= Player.find(card.player_id).name %></p>
-    <p><%= card.played_at %></p>
-    <p>==========================</p>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
-<% end %>
+  <div class='player-list__game-info'>
+    <div>
+      <h2>Bank</h2>
+      <ul>
+        <li>Brick: <%= @brick_left_in_bank %></li>
+        <li>Grain: <%= @grain_left_in_bank %></li>
+        <li>Lumber: <%= @lumber_left_in_bank %></li>
+        <li>Ore: <%= @ore_left_in_bank %></li>
+        <li>Wool: <%= @wool_left_in_bank %></li>
+      </ul>
+    </div>
+    <h2>Played cards: </h2>
+    <% Card.where.not(played_at: nil).order(played_at: :desc).each do |card| %>
+      <div>
+        <p><%= card.name %></p>
+        <%= image_tag(card.image_url, width: 100) %>
+        <p><%= Player.find(card.player_id).name %></p>
+        <p><%= card.played_at %></p>
+        <p>==========================</p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

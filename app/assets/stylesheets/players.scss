@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .player-list{
+  display: flex;
+
   &__player {
     display: flex;
     margin-top: 20px;
@@ -28,5 +30,9 @@
 
   &__give-button {
     margin-left: 20px;
+  }
+
+  &__game-info {
+    margin-left: 100px;
   }
 }
