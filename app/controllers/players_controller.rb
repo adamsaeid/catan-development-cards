@@ -30,7 +30,7 @@ class PlayersController < ApplicationController
       player.increment(:grain_count, grain_change)
       player.save
     else
-      flash.now.alert = "Player doesn't have enough of a resource"      
+      flash.now.alert = "Player doesn't have enough of a resource"
     end
     
     render :index
@@ -41,9 +41,9 @@ class PlayersController < ApplicationController
 
     @played_cards = Card.where.not(played_at: nil)
 
-    authenticate_or_request_with_http_basic do |name, password|
-      name == @player.name && password == @player.password
-    end
+    # authenticate_or_request_with_http_basic do |name, password|
+    #   name == @player.name && password == @player.password
+    # end
   end
 
   private
