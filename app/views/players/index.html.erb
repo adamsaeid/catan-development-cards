@@ -8,6 +8,7 @@
           </span>
           <%= button_to "Draw", { action: "draw", player_id: player.id }  %>
           <p>Hand size: <%= player.hand_size %></p>
+          <p>Development cards: <%= player.cards.where(played_at: nil).count %></p>
         </div>
         <%= form_with(url: "/players/#{player.id}/give", method: :post, class: 'player-list__resource-form') do %>
           <div>
