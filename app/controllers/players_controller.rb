@@ -30,10 +30,17 @@ class PlayersController < ApplicationController
   end
 
   def index
-    authenticate_or_request_with_http_basic do |name, password|
-      name == 'admin' && password == 'tetriscookie'
-    end
+    @players = Player.all.order(:id)
+    setup_bank_resources
+  end
 
-    @players = Player.all
+  private
+
+  def setup_bank_resources
+    @brick_left_in_bank = 19 - Player.sum(:brick_count)
+    @grain_left_in_bank = 19 - Player.sum(:grain_count)
+    @lumber_left_in_bank = 19 - Player.sum(:lumber_count)
+    @ore_left_in_bank = 19 - Player.sum(:ore_count)
+    @wool_left_in_bank = 19 - Player.sum(:wool_count)
   end
 end

@@ -38,6 +38,17 @@
   <% end %>
 </div>
 
+<div>
+  <h2>Bank</h2>
+  <ul>
+    <li>Brick: <%= @brick_left_in_bank %></li>
+    <li>Grain: <%= @grain_left_in_bank %></li>
+    <li>Lumber: <%= @lumber_left_in_bank %></li>
+    <li>Ore: <%= @ore_left_in_bank %></li>
+    <li>Wool: <%= @wool_left_in_bank %></li>
+  </ul>
+</div>
+
 <h2>Played cards: </h2>
 <% Card.where.not(played_at: nil).order(played_at: :desc).each do |card| %>
   <div>
