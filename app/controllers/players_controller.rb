@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-  before_action :setup, only: [:index, :give, :draw]
+  before_action :setup, except: [:show, :play_card]
 
   def draw
     drawn_card = Card.where(player_id: nil).sample
@@ -33,6 +33,27 @@ class PlayersController < ApplicationController
       flash.now.alert = "Player doesn't have enough of a resource"
     end
     
+    render :index
+  end
+
+  def steal
+    thief = Player.find(params['thief_id'])
+    victim = Player.find(params['victim_id'])
+
+    resources_to_steal_from = []
+
+    victim.brick_count.times { resources_to_steal_from << 'brick' }
+    victim.grain_count.times { resources_to_steal_from << 'grain' }
+    victim.lumber_count.times { resources_to_steal_from << 'lumber' }
+    victim.ore_count.times { resources_to_steal_from << 'ore' }
+    victim.wool_count.times { resources_to_steal_from << 'wool' }
+
+    stolen_resource = resources_to_steal_from.sample
+    
+    thief.increment(:"#{stolen_resource}_count", 1)
+    thief.save
+    victim.decrement(:"#{stolen_resource}_count", 1)
+    victim.save
     render :index
   end
 
