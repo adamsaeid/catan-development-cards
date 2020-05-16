@@ -1,3 +1,9 @@
+<% flash.each do |type, msg| %>
+  <div class='player-list__error'>
+    <%= msg %>
+  </div>
+<% end %>
+
 <div class='player-list'>
   <div class='player-list__resources'>
     <% @players.each do |player| %>

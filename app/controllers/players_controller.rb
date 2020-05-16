@@ -14,13 +14,25 @@ class PlayersController < ApplicationController
 
   def give
     player = Player.find(params['player_id'])
-    player.increment(:ore_count, params['ore'].to_i)
-    player.increment(:lumber_count, params['lumber'].to_i)
-    player.increment(:brick_count, params['brick'].to_i)
-    player.increment(:wool_count, params['wool'].to_i)
-    player.increment(:grain_count, params['grain'].to_i)
-    player.save
 
+    brick_change = params['brick'].to_i
+    grain_change = params['grain'].to_i
+    lumber_change = params['lumber'].to_i
+    ore_change = params['ore'].to_i
+    wool_change = params['wool'].to_i
+    valid_resource_change = player.valid_resource_change?(brick_change, grain_change, lumber_change, ore_change, wool_change)
+
+    if (valid_resource_change)
+      player.increment(:ore_count, ore_change)
+      player.increment(:lumber_count, lumber_change)
+      player.increment(:brick_count, brick_change)
+      player.increment(:wool_count, wool_change)
+      player.increment(:grain_count, grain_change)
+      player.save
+    else
+      flash.now.alert = "Player doesn't have enough of a resource"      
+    end
+    
     render :index
   end
 
