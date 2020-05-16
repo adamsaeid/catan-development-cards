@@ -1,7 +1,10 @@
 class PlayersController < ApplicationController
+  before_action :setup, only: [:index, :give, :draw]
+
   def draw
     drawn_card = Card.where(player_id: nil).sample
     drawn_card.update_attributes(player_id: params['player_id'])
+    render :index
   end
 
   def play_card
@@ -17,6 +20,8 @@ class PlayersController < ApplicationController
     player.increment(:wool_count, params['wool'].to_i)
     player.increment(:grain_count, params['grain'].to_i)
     player.save
+
+    render :index
   end
 
   def show
@@ -29,12 +34,12 @@ class PlayersController < ApplicationController
     end
   end
 
-  def index
+  private
+
+  def setup
     @players = Player.all.order(:id)
     setup_bank_resources
   end
-
-  private
 
   def setup_bank_resources
     @brick_left_in_bank = 19 - Player.sum(:brick_count)
