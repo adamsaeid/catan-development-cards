@@ -5,9 +5,28 @@
 .player-list{
   &__player {
     display: flex;
+    margin-top: 20px;
   }
 
   &__player-name {
     margin-right: 15px;
+    width: 40px;
+  }
+
+  &__resource-form {
+    display: flex;
+  }
+
+  &__resource-label {
+    margin-left: 20px;
+    width: 100px;
+  }
+
+  &__resource-field {
+    width: 30px;
+  }
+
+  &__give-button {
+    margin-left: 20px;
   }
 }

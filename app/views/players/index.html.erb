@@ -5,6 +5,35 @@
         <%= player.name %>
       </span>
       <%= button_to "Draw", { action: "draw", player_id: player.id }  %>
+
+      <%= form_tag("/players/#{player.id}/give", method: 'post', class: 'player-list__resource-form') do %>
+        <div>
+          <div>
+            <%= label_tag(:ore, 'Ore:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:ore, 0, class: 'player-list__resource-field') %>
+          </div>
+          <div>
+            <%= label_tag(:lumber, 'Lumber:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:lumber, 0, class: 'player-list__resource-field') %>
+          </div>
+          <div>
+            <%= label_tag(:grain, 'Grain:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:grain, 0, class: 'player-list__resource-field') %>
+          </div>
+          <div>
+            <%= label_tag(:brick, 'Brick:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:brick, 0, class: 'player-list__resource-field') %>
+          </div>
+          <div>
+            <%= label_tag(:wool, 'Wool:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:wool, 0, class: 'player-list__resource-field') %>
+          </div>
+        </div>
+        <div>
+          <%= submit_tag('Give/Take resources', data: { disable_with: false }, class: 'player-list__give-button' ) %>
+          <%= submit_tag('Clear', data: { disable_with: false }, type: 'reset', class: 'player-list__give-button' ) %>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>
