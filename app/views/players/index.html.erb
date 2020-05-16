@@ -58,6 +58,15 @@
         <li>Wool: <%= @wool_left_in_bank %></li>
       </ul>
     </div>
+    <div>
+      <h2>Steal card</h2>
+      <%= form_with(url: "/steal", method: :post) do %>
+        <%= select("steal", 'thief_id', Player.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }) %>
+        is stealing from
+        <%= select("steal", 'victim_id', Player.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }) %>
+        <%= submit_tag('steal') %>
+      <% end %>
+    </div>
     <h2>Played cards: </h2>
     <% Card.where.not(played_at: nil).order(played_at: :desc).each do |card| %>
       <div>

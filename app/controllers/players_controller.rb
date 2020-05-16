@@ -37,8 +37,8 @@ class PlayersController < ApplicationController
   end
 
   def steal
-    thief = Player.find(params['thief_id'])
-    victim = Player.find(params['victim_id'])
+    thief = Player.find(params['steal']['thief_id'])
+    victim = Player.find(params['steal']['victim_id'])
 
     resources_to_steal_from = []
 
