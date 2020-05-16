@@ -57,6 +57,33 @@ class PlayersController < ApplicationController
     render :index
   end
 
+  def trade
+    player_1 = Player.find(params['player_1_id'])
+    player_2 = Player.find(params['player_2_id'])
+
+    from_player_1_results = [
+      transfer_resource(player_1, player_2, 'brick', params['player_1_brick'].to_i),
+      transfer_resource(player_1, player_2, 'grain', params['player_1_grain'].to_i),
+      transfer_resource(player_1, player_2, 'lumber', params['player_1_lumber'].to_i),
+      transfer_resource(player_1, player_2, 'ore', params['player_1_ore'].to_i),
+      transfer_resource(player_1, player_2, 'wool', params['player_1_wool'].to_i)
+    ]
+
+    from_player_2_results = [
+      transfer_resource(player_2, player_1, 'brick', params['player_2_brick'].to_i),
+      transfer_resource(player_2, player_1, 'grain', params['player_2_grain'].to_i),
+      transfer_resource(player_2, player_1, 'lumber', params['player_2_lumber'].to_i),
+      transfer_resource(player_2, player_1, 'ore', params['player_2_ore'].to_i),
+      transfer_resource(player_2, player_1, 'wool', params['player_2_wool'].to_i)
+    ]
+
+
+    player_1.save
+    player_2.save
+
+    render :index
+  end
+
   def show
     @player = Player.find(params['player_id'])
 
@@ -80,5 +107,12 @@ class PlayersController < ApplicationController
     @lumber_left_in_bank = 19 - Player.sum(:lumber_count)
     @ore_left_in_bank = 19 - Player.sum(:ore_count)
     @wool_left_in_bank = 19 - Player.sum(:wool_count)
+  end
+
+  def transfer_resource(from_player, to_player, resource, amount)
+    return false if from_player.send("#{resource}_count") < amount
+    from_player.decrement(:"#{resource}_count", amount)
+    to_player.increment(:"#{resource}_count", amount)
+    true
   end
 end

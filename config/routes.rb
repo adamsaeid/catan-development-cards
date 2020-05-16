@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   post '/players/:player_id/play_card', to: 'players#play_card'
   post '/players/:player_id/give', to: 'players#give'
   post '/steal', to: 'players#steal'
+  post '/trade', to: 'players#trade'
 end
