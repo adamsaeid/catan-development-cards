@@ -2,10 +2,13 @@
   <div class='player-list__resources'>
     <% @players.each do |player| %>
       <div class="player-list__player">
-        <span class="player-list__player-name">
-          <%= player.name %>
-        </span>
-        <%= button_to "Draw", { action: "draw", player_id: player.id }  %>
+        <div>
+          <span class="player-list__player-name">
+            <%= player.name %>
+          </span>
+          <%= button_to "Draw", { action: "draw", player_id: player.id }  %>
+          <p>Hand size: <%= player.hand_size %></p>
+        </div>
         <%= form_tag("/players/#{player.id}/give", method: 'post', class: 'player-list__resource-form') do %>
           <div>
             <div>
