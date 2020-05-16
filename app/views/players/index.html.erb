@@ -9,20 +9,20 @@
       <%= form_tag("/players/#{player.id}/give", method: 'post', class: 'player-list__resource-form') do %>
         <div>
           <div>
-            <%= label_tag(:ore, 'Ore:', class: 'player-list__resource-label') %>
-            <%= number_field_tag(:ore, 0, class: 'player-list__resource-field') %>
-          </div>
-          <div>
-            <%= label_tag(:lumber, 'Lumber:', class: 'player-list__resource-label') %>
-            <%= number_field_tag(:lumber, 0, class: 'player-list__resource-field') %>
+            <%= label_tag(:brick, 'Brick:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:brick, 0, class: 'player-list__resource-field') %>
           </div>
           <div>
             <%= label_tag(:grain, 'Grain:', class: 'player-list__resource-label') %>
             <%= number_field_tag(:grain, 0, class: 'player-list__resource-field') %>
           </div>
           <div>
-            <%= label_tag(:brick, 'Brick:', class: 'player-list__resource-label') %>
-            <%= number_field_tag(:brick, 0, class: 'player-list__resource-field') %>
+            <%= label_tag(:lumber, 'Lumber:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:lumber, 0, class: 'player-list__resource-field') %>
+          </div>
+          <div>
+            <%= label_tag(:ore, 'Ore:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:ore, 0, class: 'player-list__resource-field') %>
           </div>
           <div>
             <%= label_tag(:wool, 'Wool:', class: 'player-list__resource-label') %>
