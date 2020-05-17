@@ -5,13 +5,13 @@
 <% end %>
 
 <div class='player-list'>
-  <div class='player-list__resources'>
+  <div class='player-list__player-info'>
     <% @players.each do |player| %>
       <div class="player-list__player">      
         <div>
-          <span class="player-list__player-name">
+          <h3 class="player-list__player-name">
             <%= player.name %>
-          </span>
+          </h3>
           <%= button_to "Draw", { action: "draw", player_id: player.id }  %>
           <p>Hand size: <%= player.hand_size %></p>
           <p>Development cards: <%= player.cards.where(played_at: nil).count %></p>
