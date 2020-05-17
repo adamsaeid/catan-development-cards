@@ -33,6 +33,7 @@ class PlayersController < ApplicationController
       flash.now.alert = "Player doesn't have enough of a resource"
     end
     
+    setup_bank_resources
     render :index
   end
 
