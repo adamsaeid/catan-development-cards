@@ -13,7 +13,7 @@ class PlayersController < ApplicationController
   end
 
   def give
-    player = Player.find(params['player_id'])
+    player = Player.find(params['give']['player_id'])
 
     brick_change = params['brick'].to_i
     grain_change = params['grain'].to_i

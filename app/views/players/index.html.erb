@@ -16,39 +16,42 @@
           <p>Hand size: <%= player.hand_size %></p>
           <p>Development cards: <%= player.cards.where(played_at: nil).count %></p>
         </div>
-
-        <%= form_with(url: "/players/#{player.id}/give", method: :post, class: 'player-list__resource-form') do %>
-          <div>
-            <div>
-              <%= label_tag(:brick, 'Brick:', class: 'player-list__resource-label') %>
-              <%= number_field_tag(:brick, 0, class: 'player-list__resource-field') %>
-            </div>
-            <div>
-              <%= label_tag(:grain, 'Grain:', class: 'player-list__resource-label') %>
-              <%= number_field_tag(:grain, 0, class: 'player-list__resource-field') %>
-            </div>
-            <div>
-              <%= label_tag(:lumber, 'Lumber:', class: 'player-list__resource-label') %>
-              <%= number_field_tag(:lumber, 0, class: 'player-list__resource-field') %>
-            </div>
-            <div>
-              <%= label_tag(:ore, 'Ore:', class: 'player-list__resource-label') %>
-              <%= number_field_tag(:ore, 0, class: 'player-list__resource-field') %>
-            </div>
-            <div>
-              <%= label_tag(:wool, 'Wool:', class: 'player-list__resource-label') %>
-              <%= number_field_tag(:wool, 0, class: 'player-list__resource-field') %>
-            </div>
-          </div>
-          <div>
-            <%= submit_tag('Give/Take resources', class: 'player-list__give-button' ) %>
-          </div>
-        <% end %>
       </div>
     <% end %>
   </div>
 
   <div class='player-list__game-info'>
+    <div>
+      <h2>Give/Take resources</h2>
+      <%= form_with(url: "/players/give", method: :post, class: 'player-list__resource-form') do %>
+        <div>
+          <div class="player-list__resource">
+            <%= label_tag(:brick, 'Brick:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:brick, 0, class: 'player-list__resource-field') %>
+          </div>
+          <div class="player-list__resource">
+            <%= label_tag(:grain, 'Grain:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:grain, 0, class: 'player-list__resource-field') %>
+          </div>
+          <div class="player-list__resource">
+            <%= label_tag(:lumber, 'Lumber:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:lumber, 0, class: 'player-list__resource-field') %>
+          </div>
+          <div class="player-list__resource">
+            <%= label_tag(:ore, 'Ore:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:ore, 0, class: 'player-list__resource-field') %>
+          </div>
+          <div class="player-list__resource">
+            <%= label_tag(:wool, 'Wool:', class: 'player-list__resource-label') %>
+            <%= number_field_tag(:wool, 0, class: 'player-list__resource-field') %>
+          </div>
+        </div>
+        <div class="player-list__resource-controls">
+          <%= select("give", 'player_id', Player.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }, { class: 'player-list__resource-player' }) %>          
+          <%= submit_tag('Give/Take resources', class: 'player-list__give-button' ) %>
+        </div>
+      <% end %>
+    </div>
     <div>    
       <h2>Bank</h2>
       <ul>

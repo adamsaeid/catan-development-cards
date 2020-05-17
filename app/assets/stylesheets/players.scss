@@ -16,13 +16,27 @@
   }
 
   &__resource-form {
-    margin-left: 100px;
     display: flex;
   }
 
   &__resource-label {
-    margin-left: 20px;
-    width: 100px;
+    width: 70px;
+    display: block;
+  }
+
+  &__resource {
+    margin-top: 5px;
+    display: flex;
+  }
+
+  &__resource-controls {
+    margin-top: 5px;
+    margin-left: 30px;
+    display: block;
+  }
+
+  &__resource-player {
+    display: block;
   }
 
   &__resource-field {
@@ -30,8 +44,9 @@
   }
 
   &__give-button {
-    margin-left: 20px;
-  }
+    margin-top: 5px;
+    display: block;
+  }  
 
   &__game-info {
     margin-left: 50px;
