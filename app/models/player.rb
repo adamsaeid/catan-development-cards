@@ -20,4 +20,8 @@ class Player < ApplicationRecord
       new_wool_count
     ].all? { |count| count >= 0 }
   end
+
+  def knight_count
+    cards.where(player_id: id).where.not(played_at: nil).count
+  end
 end

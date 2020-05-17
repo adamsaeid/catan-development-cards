@@ -14,9 +14,10 @@
             <h3 class="player-list__player-name">
               <%= player.name %>
             </h3>
-            <%= button_to "Draw", { action: "draw", player_id: player.id }  %>
             <p>Hand size: <%= player.hand_size %></p>
+            <p>Knights: <%= player.knight_count %></p>
             <p>Development cards: <%= player.cards.where(played_at: nil).count %></p>
+            <%= button_to "Draw", { action: "draw", player_id: player.id }  %>
           </div>
         </div>
       <% end %>
