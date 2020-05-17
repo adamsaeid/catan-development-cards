@@ -7,7 +7,7 @@
 <div class='player-list'>
   <div class='player-list__resources'>
     <% @players.each do |player| %>
-      <div class="player-list__player">
+      <div class="player-list__player">      
         <div>
           <span class="player-list__player-name">
             <%= player.name %>
@@ -16,6 +16,7 @@
           <p>Hand size: <%= player.hand_size %></p>
           <p>Development cards: <%= player.cards.where(played_at: nil).count %></p>
         </div>
+
         <%= form_with(url: "/players/#{player.id}/give", method: :post, class: 'player-list__resource-form') do %>
           <div>
             <div>
@@ -48,7 +49,7 @@
   </div>
 
   <div class='player-list__game-info'>
-    <div>
+    <div>    
       <h2>Bank</h2>
       <ul>
         <li>Brick: <%= @brick_left_in_bank %></li>
@@ -58,6 +59,60 @@
         <li>Wool: <%= @wool_left_in_bank %></li>
       </ul>
     </div>
+
+    <%= form_with(url: "/trade", method: :post) do %>
+      <h2>Trade</h2>
+      <div>
+        <%= select("trade", 'player_1_id', Player.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }) %>            
+        <div>
+          <%= label_tag(:player_1_brick, 'Brick:') %>
+          <%= number_field_tag(:player_1_brick, 0) %>
+        </div>
+        <div>
+          <%= label_tag(:player_1_grain, 'Grain:', ) %>
+          <%= number_field_tag(:player_1_grain, 0) %>
+        </div>
+        <div>
+          <%= label_tag(:player_1_lumber, 'Lumber:',) %>
+          <%= number_field_tag(:player_1_lumber, 0) %>
+        </div>
+        <div>
+          <%= label_tag(:player_1_ore, 'Ore:') %>
+          <%= number_field_tag(:player_1_ore, 0) %>
+        </div>
+        <div>
+          <%= label_tag(:player_1_wool, 'Wool:') %>
+          <%= number_field_tag(:player_1_wool, 0) %>
+        </div>
+      </div>
+
+      <div>
+        <%= select("trade", 'player_2_id', Player.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }) %>            
+        <div>
+          <%= label_tag(:player_2_brick, 'Brick:') %>
+          <%= number_field_tag(:player_2_brick, 0) %>
+        </div>
+        <div>
+          <%= label_tag(:player_2_grain, 'Grain:', ) %>
+          <%= number_field_tag(:player_2_grain, 0) %>
+        </div>
+        <div>
+          <%= label_tag(:player_2_lumber, 'Lumber:',) %>
+          <%= number_field_tag(:player_2_lumber, 0) %>
+        </div>
+        <div>
+          <%= label_tag(:player_2_ore, 'Ore:') %>
+          <%= number_field_tag(:player_2_ore, 0) %>
+        </div>
+        <div>
+          <%= label_tag(:player_2_wool, 'Wool:') %>
+          <%= number_field_tag(:player_2_wool, 0) %>
+        </div>
+      </div>
+ 
+      <%= submit_tag('Trade') %>
+    <% end %>
+
     <div>
       <h2>Steal card</h2>
       <%= form_with(url: "/steal", method: :post) do %>
@@ -67,6 +122,7 @@
         <%= submit_tag('steal') %>
       <% end %>
     </div>
+
     <h2>Played cards: </h2>
     <% Card.where.not(played_at: nil).order(played_at: :desc).each do |card| %>
       <div>

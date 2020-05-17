@@ -58,8 +58,8 @@ class PlayersController < ApplicationController
   end
 
   def trade
-    player_1 = Player.find(params['player_1_id'])
-    player_2 = Player.find(params['player_2_id'])
+    player_1 = Player.find(params['trade']['player_1_id'])
+    player_2 = Player.find(params['trade']['player_2_id'])
 
     from_player_1_results = [
       transfer_resource(player_1, player_2, 'brick', params['player_1_brick'].to_i),
@@ -77,9 +77,20 @@ class PlayersController < ApplicationController
       transfer_resource(player_2, player_1, 'wool', params['player_2_wool'].to_i)
     ]
 
+    messages = []
 
-    player_1.save
-    player_2.save
+    if !from_player_1_results.all?
+      flash.now.alert = "#{player_1.name} doesn't have enough of a resource"
+    end
+
+    if !from_player_2_results.all?
+      flash.now.alert = "#{player_2.name} doesn't have enough of a resource"
+    end
+
+    if from_player_1_results.all? && from_player_2_results.all?
+      player_1.save
+      player_2.save
+    end
 
     render :index
   end
