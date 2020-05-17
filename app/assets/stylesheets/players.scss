@@ -42,3 +42,24 @@
     color: white;
   }
 }
+
+.trading {
+  display: flex;
+
+  &__player {
+    margin-right: 30px;
+  }
+
+  &__resource-form {
+    margin-top: 20px;
+  }
+
+  &__resource-field {
+    width: 30px;
+  }
+
+  &__submit {
+    height: 50px;
+    align-self: center;
+  }
+}
