@@ -2,20 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.player-list{
+.player-list {
+  padding: 50px 100px 100px 100px;
+  display: flex;
+  justify-content: space-around;
+
+  &__left {
+    max-width: 1500px;
+  }
+
+  &__played-cards {
+    min-width: 300px;
+    max-width: 600px;
+  }
+
   &__player {
     display: flex;
+    min-width: 200px;
     margin-top: 20px;
   }
 
+  &__players-title {
+    margin-bottom: 0;
+  }
+
   &__player-name {
+    margin-top: 0;
     margin-bottom: 10px;
     width: 40px;
   }
 
   &__player-info {
     display: flex;
-    justify-content: space-between;
+    flex-grow: 2;
+    flex-wrap: wrap;
+    margin-right: 50px;
   }
 
   &__resource-form {
@@ -52,6 +73,16 @@
   }  
 
   &__game-info {
+    margin-top: 20px;
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  &__game-info-section {
+    margin-top: 10px;
+    margin-right: 75px;
+    min-width: 300px;
   }
 
   &__error {
