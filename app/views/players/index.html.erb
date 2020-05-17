@@ -73,24 +73,24 @@
             <div class="trading__player">
               <%= select("trade", 'player_1_id', Player.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }) %>
               <div class="trading__resource-form">
-                <div>
-                  <%= label_tag(:player_1_brick, 'Brick:') %>
+                <div class="trading__resource">
+                  <%= label_tag(:player_1_brick, 'Brick:', class: 'trading__resource-label') %>
                   <%= number_field_tag(:player_1_brick, 0, class: 'trading__resource-field') %>
                 </div>
-                <div>
-                  <%= label_tag(:player_1_grain, 'Grain:', ) %>
+                <div class="trading__resource">
+                  <%= label_tag(:player_1_grain, 'Grain:', class: 'trading__resource-label') %>
                   <%= number_field_tag(:player_1_grain, 0, class: 'trading__resource-field') %>
                 </div>
-                <div>
-                  <%= label_tag(:player_1_lumber, 'Lumber:',) %>
+                <div class="trading__resource">
+                  <%= label_tag(:player_1_lumber, 'Lumber:', class: 'trading__resource-label') %>
                   <%= number_field_tag(:player_1_lumber, 0, class: 'trading__resource-field') %>
                 </div>
-                <div>
-                  <%= label_tag(:player_1_ore, 'Ore:') %>
+                <div class="trading__resource">
+                  <%= label_tag(:player_1_ore, 'Ore:', class: 'trading__resource-label') %>
                   <%= number_field_tag(:player_1_ore, 0, class: 'trading__resource-field') %>
                 </div>
-                <div>
-                  <%= label_tag(:player_1_wool, 'Wool:') %>
+                <div class="trading__resource">
+                  <%= label_tag(:player_1_wool, 'Wool:', class: 'trading__resource-label') %>
                   <%= number_field_tag(:player_1_wool, 0, class: 'trading__resource-field') %>
                 </div>
               </div>
@@ -99,24 +99,24 @@
             <div class="trading__player">
               <%= select("trade", 'player_2_id', Player.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }) %>            
               <div class="trading__resource-form">
-                <div>
-                  <%= label_tag(:player_2_brick, 'Brick:') %>
+                <div class="trading__resource">
+                  <%= label_tag(:player_2_brick, 'Brick:', class: 'trading__resource-label') %>
                   <%= number_field_tag(:player_2_brick, 0, class: 'trading__resource-field') %>
                 </div>
-                <div>
-                  <%= label_tag(:player_2_grain, 'Grain:', ) %>
+                <div class="trading__resource">
+                  <%= label_tag(:player_2_grain, 'Grain:', class: 'trading__resource-label') %>
                   <%= number_field_tag(:player_2_grain, 0, class: 'trading__resource-field') %>
                 </div>
-                <div>
-                  <%= label_tag(:player_2_lumber, 'Lumber:',) %>
+                <div class="trading__resource">
+                  <%= label_tag(:player_2_lumber, 'Lumber:', class: 'trading__resource-label') %>
                   <%= number_field_tag(:player_2_lumber, 0, class: 'trading__resource-field') %>
                 </div>
-                <div>
-                  <%= label_tag(:player_2_ore, 'Ore:') %>
+                <div class="trading__resource">
+                  <%= label_tag(:player_2_ore, 'Ore:', class: 'trading__resource-label') %>
                   <%= number_field_tag(:player_2_ore, 0, class: 'trading__resource-field') %>
                 </div>
-                <div>
-                  <%= label_tag(:player_2_wool, 'Wool:') %>
+                <div class="trading__resource">
+                  <%= label_tag(:player_2_wool, 'Wool:', class: 'trading__resource-label') %>
                   <%= number_field_tag(:player_2_wool, 0, class: 'trading__resource-field') %>
                 </div>
               </div>
@@ -143,7 +143,7 @@
     <% Card.where.not(played_at: nil).order(played_at: :desc).each do |card| %>
       <div>
         <p><%= card.name %></p>
-        <%= image_tag(card.image_url, width: 100) %>
+        <%= image_tag(card.image_url, width: 175) %>
         <p><%= Player.find(card.player_id).name %></p>
         <p><%= card.played_at %></p>
         <p>==========================</p>
