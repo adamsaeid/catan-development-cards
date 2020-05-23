@@ -22,6 +22,6 @@ class Player < ApplicationRecord
   end
 
   def knight_count
-    cards.where(player_id: id).where.not(played_at: nil).count
+    cards.where(player_id: id).where(name: 'Knight').where.not(played_at: nil).count
   end
 end
