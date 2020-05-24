@@ -12,7 +12,7 @@ export const getResourcesSuccess = (resources) => ({
 
 export const getResources = () => async (dispatch) => {
   dispatch(getResourcesLoading())
-  const response = await fetch('http://localhost:3000/players/1/resources')
+  const response = await fetch('https://gentle-fortress-04729.herokuapp.com/players//1/resources')
   const resources = await response.json();
   dispatch(getResourcesSuccess(resources));
 }
