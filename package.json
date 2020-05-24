@@ -6,7 +6,7 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.9.6",
-    "@rails/webpacker": "3.5",
+    "@rails/webpacker": "^5.1.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-loader": "^8.1.0",
     "prop-types": "^15.7.2",
