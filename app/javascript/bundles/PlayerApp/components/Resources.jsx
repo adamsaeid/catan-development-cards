@@ -15,7 +15,10 @@ export default () => {
 
 
   useEffect(() => {
+    const interval = setInterval(() => {
     dispatch(getResources());
+    }, 1000);
+    return () => clearInterval(interval);
   }, [])
 
   const resourceArray = () => {
