@@ -9,9 +9,16 @@ import ore from '../images/ore.svg';
 import wool from '../images/wool.svg';
 
 const StyledResource = styled.div`
-  flex-basis: 18.75%;
-  margin: 0.1rem;
+  width: 20%;
+  display: flex;
+  justify-content: center;
 `;
+
+const StyledImage = styled.img`
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+`
 
 export default ({ type }) => {
   const icon = (type) => {
@@ -32,7 +39,7 @@ export default ({ type }) => {
 
   return (
     <StyledResource>
-      <img src={icon(type)} />
+      <StyledImage src={icon(type)} />
     </StyledResource>
   )
 };
