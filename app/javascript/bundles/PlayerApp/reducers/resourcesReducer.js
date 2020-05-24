@@ -10,10 +10,8 @@ const initialState = {
 };
 
 const resourcesReducer = (state = initialState, action) => {
-  console.log(action)
   switch(action.type) {
     case RESOURCES_LOADING:
-      console.log('i am loading')
       return {
         ...state,
         loading: true

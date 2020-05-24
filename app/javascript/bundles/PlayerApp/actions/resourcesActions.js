@@ -14,6 +14,5 @@ export const getResources = () => async (dispatch) => {
   dispatch(getResourcesLoading())
   const response = await fetch('http://localhost:3000/players/1/resources')
   const resources = await response.json();
-  console.log(resources)
   dispatch(getResourcesSuccess(resources));
 }
