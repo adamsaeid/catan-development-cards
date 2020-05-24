@@ -5,7 +5,7 @@ import { getResources } from '../actions/resourcesActions';
 import Resource from './Resource';
 
 const StyledResources = styled.div`
-  max-width: 25rem;
+  max-width: 125rem;
   margin-left: auto;
   margin-right: auto;
   display: flex;
