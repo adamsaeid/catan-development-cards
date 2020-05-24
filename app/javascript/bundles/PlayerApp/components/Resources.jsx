@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
+import styled from 'styled-components'
 import { useSelector, useDispatch } from "react-redux";
 import { getResources } from '../actions/resourcesActions';
 import Resource from './Resource';
+
+const StyledResources = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
 export default () => {
   const state = useSelector(state => state);
@@ -34,13 +40,12 @@ export default () => {
   };
 
   return (
-    <div>
-      <h2>
-        Resources
-      </h2>
+    <StyledResources>
       { 
-        resourceArray().map((resource, index) => <Resource key={index} type={resource} />)
+        resourceArray().map((resource, index) => (
+          <Resource key={index} type={resource} />
+        ))
       }
-    </div>
+    </StyledResources>
   )
 };

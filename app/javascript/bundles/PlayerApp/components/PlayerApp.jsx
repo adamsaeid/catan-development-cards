@@ -5,12 +5,7 @@ import Resources from './Resources';
 
 const PlayerApp = ({ name }) => (
   <Provider store={store}>
-    <div>
-      <h1>
-        {name}
-      </h1>
-      <Resources />
-    </div>
+    <Resources />
   </ Provider>
 );
 
