@@ -9,7 +9,8 @@ import ore from '../images/ore.svg';
 import wool from '../images/wool.svg';
 
 const StyledResource = styled.div`
-  flex-basis: 20%;
+  flex-basis: 18.75%;
+  margin: 0.1rem;
 `;
 
 export default ({ type }) => {

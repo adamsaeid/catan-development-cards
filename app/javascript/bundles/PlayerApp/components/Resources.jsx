@@ -15,7 +15,7 @@ export default () => {
 
 
   useEffect(() => {
-    dispatch(getResources())
+    dispatch(getResources());
   }, [])
 
   const resourceArray = () => {
