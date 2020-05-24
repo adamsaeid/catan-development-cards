@@ -8,9 +8,8 @@ import lumber from '../images/lumber.svg';
 import ore from '../images/ore.svg';
 import wool from '../images/wool.svg';
 
-const StyledResource = styled.img`
-  flex-basis: 22%;
-  max-width: 3rem;
+const StyledResource = styled.div`
+  flex-basis: 20%;
 `;
 
 export default ({ type }) => {
@@ -31,6 +30,8 @@ export default ({ type }) => {
 
 
   return (
-    <StyledResource src={icon(type)} />
+    <StyledResource>
+      <img src={icon(type)} />
+    </StyledResource>
   )
 };
