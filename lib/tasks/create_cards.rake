@@ -24,9 +24,9 @@ task create_cards: :environment do
   Card.create(name: 'Monopoly', image_url: 'https://miro.medium.com/max/1400/1*CUcpK3BDp6nlwWSNd0Y9FQ.jpeg')
   Card.create(name: 'Monopoly', image_url: 'https://miro.medium.com/max/1400/1*CUcpK3BDp6nlwWSNd0Y9FQ.jpeg')
 
-  Card.create(name: 'Victory Point', image_url: 'https://catanfusion.com/images/OriginalChapelVictoryPointCard.jpg')
-  Card.create(name: 'Victory Point', image_url: 'https://catanfusion.com/images/OriginalChapelVictoryPointCard.jpg')
-  Card.create(name: 'Victory Point', image_url: 'https://catanfusion.com/images/OriginalChapelVictoryPointCard.jpg')
-  Card.create(name: 'Victory Point', image_url: 'https://catanfusion.com/images/OriginalChapelVictoryPointCard.jpg')
-  Card.create(name: 'Victory Point', image_url: 'https://catanfusion.com/images/OriginalChapelVictoryPointCard.jpg')
+  Card.create(name: 'Chapel', image_url: 'https://catanfusion.com/images/OriginalChapelVictoryPointCard.jpg')
+  Card.create(name: 'Library', image_url: 'https://catanfusion.com/images/OriginalChapelVictoryPointCard.jpg')
+  Card.create(name: 'Market', image_url: 'https://catanfusion.com/images/OriginalChapelVictoryPointCard.jpg')
+  Card.create(name: 'Palace', image_url: 'https://catanfusion.com/images/OriginalChapelVictoryPointCard.jpg')
+  Card.create(name: 'University', image_url: 'https://catanfusion.com/images/OriginalChapelVictoryPointCard.jpg')
 end
