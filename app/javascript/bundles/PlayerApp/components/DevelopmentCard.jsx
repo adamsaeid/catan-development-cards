@@ -49,7 +49,7 @@ const CardIcon = styled.img`
   border-radius: 1.5rem;
   width: 40%;
   padding: 0.5rem;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
   display: block;
