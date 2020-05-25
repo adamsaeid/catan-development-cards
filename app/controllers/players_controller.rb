@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
 
   def show
     player = Player.find(params['player_id'])
-    
+
     resources = {
       brick: player.brick_count,
       grain: player.grain_count,
@@ -22,7 +22,7 @@ class PlayersController < ApplicationController
     
     player_json = {
       resources: resources,
-      development_cards: development_cards
+      developmentCards: development_cards
     }.to_json
     
     render json: player_json
