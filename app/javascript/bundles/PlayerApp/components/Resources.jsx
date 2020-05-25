@@ -13,8 +13,7 @@ const StyledResources = styled.div`
 `;
 
 export default ({ playerId }) => {
-  const state = useSelector(state => state.resources);
-  console.log(state)
+  const resources = useSelector(state => state.resources);
   const dispatch = useDispatch();
 
 
@@ -26,7 +25,7 @@ export default ({ playerId }) => {
   }, [])
 
   const resourceArray = () => {
-    const resources = []
+    const resourceArr = []
 
     const resourceTypes = [
       'brick',
@@ -37,13 +36,13 @@ export default ({ playerId }) => {
     ];
 
     resourceTypes.forEach((type) => {
-      const resourcesOfType = state[type];
+      const resourcesOfType = resources[type];
       for(let i = 0; i < resourcesOfType; i++) {
-        resources.push(type)
+        resourceArr.push(type)
       }        
     })
 
-    return resources;
+    return resourceArr;
   };
 
   return (
