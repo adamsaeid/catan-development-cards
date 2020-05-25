@@ -10,31 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200515223111) do
+ActiveRecord::Schema.define(version: 2020_05_25_155839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cards", force: :cascade do |t|
-    t.integer  "player_id"
-    t.string   "image_url"
+  create_table "cards", id: :serial, force: :cascade do |t|
+    t.integer "player_id"
+    t.string "image_url"
     t.datetime "played_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "name"
-    t.index ["player_id"], name: "index_cards_on_player_id", using: :btree
+    t.string "name"
+    t.string "description"
+    t.index ["player_id"], name: "index_cards_on_player_id"
   end
 
-  create_table "players", force: :cascade do |t|
-    t.string   "name"
-    t.string   "password"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "brick_count"
-    t.integer  "lumber_count"
-    t.integer  "ore_count"
-    t.integer  "wool_count"
-    t.integer  "grain_count"
+  create_table "players", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "brick_count"
+    t.integer "lumber_count"
+    t.integer "ore_count"
+    t.integer "wool_count"
+    t.integer "grain_count"
   end
 
   add_foreign_key "cards", "players"
