@@ -29,6 +29,6 @@ export const playDevelopmentCardSuccess = () => ({
 
 export const playDevelopmentCard = (playerId, cardId) => async (dispatch) => {
   dispatch(playDevelopmentCardLoading());
-  await fetch(`https://gentle-fortress-04729.herokuapp.com/${playerId}/play_card?card_id=${cardId}`, { method: 'POST' });
+  await fetch(`https://gentle-fortress-04729.herokuapp.com/players/${playerId}/play_card?card_id=${cardId}`, { method: 'POST' });
   dispatch(playDevelopmentCardSuccess());
 }
