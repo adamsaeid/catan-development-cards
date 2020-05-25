@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
 
 import knight from '../images/knight.svg';
@@ -11,6 +11,8 @@ import market from '../images/market.svg';
 import chapel from '../images/chapel.svg';
 import monopoly from '../images/monopoly.svg';
 
+import Modal from 'react-modal';
+
 const StyledDevelopmentCard = styled.div`
   width: 50%;
   text-align: center;
@@ -21,24 +23,55 @@ const StyledDevelopmentCard = styled.div`
 const CardInner = styled.div`
   border-style: solid;
   border-width: 0.4rem;
+  border-radius: 1.5rem;
   margin: 0.4rem;
   padding: 2rem;
-  border-radius: 1.5rem;
+`;
+
+const CardModalTitle = styled.p`
+  text-align: center;
+  font-family: 'Arvo';
+  font-size: 5rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
 `;
 
 const CardText = styled.p`
+  text-align: center;
+  font-family: 'Arvo';
   margin: 0;
   font-size: 3rem;
 `;
 
 const CardIcon = styled.img`
+  border-style: solid;
+  border-width: 0.4rem;
+  border-radius: 1.5rem;
   width: 40%;
-  padding: 0.25rem;
+  padding: 0.5rem;
   margin-top: 1.5rem;
   margin-left: auto;
   margin-right: auto;
   display: block;
 `;
+
+const CardDescription = styled.p`
+  font-size: 3rem;
+  font-family: 'Arvo';
+  text-align: center;
+`;
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)',
+    width                 : '80%'
+  }
+};
 
 export default ({ card }) => {
   const icon = (cardName) => {
@@ -65,14 +98,38 @@ export default ({ card }) => {
         return knight;
     }
   }
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal(){
+    setIsOpen(false);
+  }
+
   return (
-    <StyledDevelopmentCard>
+    <StyledDevelopmentCard onClick={openModal}>
       <CardInner>
         <CardText>
           {card.name}
         </CardText>
         <CardIcon src={icon(card.name)} />
       </CardInner>
+      <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customStyles}
+          ariaHideApp={false}
+        >
+        <CardInner>
+          <CardModalTitle>
+            {card.name}
+          </CardModalTitle>
+          <CardIcon src={icon(card.name)} />
+          <CardDescription>{card.description}</CardDescription>
+        </CardInner>
+      </Modal>
     </StyledDevelopmentCard>
   )
 };
