@@ -8030,11 +8030,6 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typeface-arvo@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/typeface-arvo/-/typeface-arvo-1.1.3.tgz#afea58c7a8b93571bff07e41839b7409a51c5370"
-  integrity sha512-OqblHZ458xYWjXfbyPSpQrhKle1ySYUlIC/abiWfngxduB+9zuP9ODfXh263zF0ebwBZ8qhAPDESEoLzGw2pVA==
-
 unicode-canonical-property-names-ecmascript@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/unicode-canonical-property-names-ecmascript/-/unicode-canonical-property-names-ecmascript-1.0.4.tgz#2619800c4c825800efdd8343af7dd9933cbe2818"
