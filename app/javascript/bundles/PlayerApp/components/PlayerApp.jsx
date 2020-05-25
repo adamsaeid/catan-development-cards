@@ -13,11 +13,19 @@ const Name = styled.h1`
   text-align: center;
 `;
 
+const StyledApp = styled.div`
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 const PlayerApp = ({ name, id }) => (
   <Provider store={store}>
-    <Name>{ name }</Name>
-    <Resources playerId={id}/>
-    <DevelopmentCards playerId={id} />
+    <StyledApp>
+      <Name>{ name }</Name>
+      <Resources playerId={id}/>
+      <DevelopmentCards playerId={id} />
+    </StyledApp>
   </ Provider>
 );
 
