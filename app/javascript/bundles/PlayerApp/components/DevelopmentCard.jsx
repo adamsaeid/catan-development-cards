@@ -61,6 +61,25 @@ const CardDescription = styled.p`
   text-align: center;
 `;
 
+const ButtonContainer = styled.div`
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+`;
+
+const CloseButton = styled.button`
+  border-style: solid;
+  border-radius: 4rem;
+  border-color: #9c2428;
+  color: #9c2428;
+  border-width: 0.4rem;
+  font-size: 3rem;
+  font-family: 'Arvo';
+  display: block;
+  background-color: transparent;
+  padding: 1rem 3rem;
+`;
+
 const customStyles = {
   content : {
     top                   : '50%',
@@ -105,31 +124,36 @@ export default ({ card }) => {
   }
 
   function closeModal(){
+    console.log('closing the modal')
     setIsOpen(false);
   }
 
   return (
-    <StyledDevelopmentCard onClick={openModal}>
-      <CardInner>
-        <CardText>
-          {card.name}
-        </CardText>
-        <CardIcon src={icon(card.name)} />
-      </CardInner>
+    <>
+      <StyledDevelopmentCard onClick={openModal}>
+        <CardInner>
+          <CardText>
+            {card.name}
+          </CardText>
+          <CardIcon src={icon(card.name)} />
+        </CardInner>
+      </StyledDevelopmentCard>
       <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          style={customStyles}
-          ariaHideApp={false}
-        >
+        isOpen={modalIsOpen}
+        style={customStyles}
+        ariaHideApp={false}
+      >
         <CardInner>
           <CardModalTitle>
             {card.name}
           </CardModalTitle>
           <CardIcon src={icon(card.name)} />
           <CardDescription>{card.description}</CardDescription>
+          <ButtonContainer>
+            <CloseButton onClick={closeModal}>Back</CloseButton>
+          </ButtonContainer>
         </CardInner>
       </Modal>
-    </StyledDevelopmentCard>
+    </>
   )
 };
