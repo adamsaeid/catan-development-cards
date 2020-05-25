@@ -25,7 +25,7 @@ const CardInner = styled.div`
   border-width: 0.4rem;
   border-radius: 1.5rem;
   margin: 0.4rem;
-  padding: 2rem;
+  padding: 2rem 2rem 3.5rem 2rem;
 `;
 
 const CardModalTitle = styled.p`
