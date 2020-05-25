@@ -8,7 +8,7 @@ const StyledDevelopmentCards = styled.div`
   margin-right: auto;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 1rem;
+  margin-top: 5rem;
 `;
 
 export default () => {

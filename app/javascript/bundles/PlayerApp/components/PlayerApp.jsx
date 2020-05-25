@@ -8,6 +8,7 @@ import "typeface-arvo";
 
 const Name = styled.h1`
   font-family: 'Arvo';
+  font-size: 5rem;
   font-weight: normal;
   text-align: center;
 `;

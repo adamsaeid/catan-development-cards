@@ -20,24 +20,24 @@ const StyledDevelopmentCard = styled.div`
 
 const CardInner = styled.div`
   border-style: solid;
-  border-width: 0.07rem;
+  border-width: 0.4rem;
   margin: 0.4rem;
-  padding: 0.7rem;
+  padding: 2rem;
+  border-radius: 1.5rem;
 `;
 
 const CardText = styled.p`
   margin: 0;
+  font-size: 3rem;
 `;
 
 const CardIcon = styled.img`
   width: 40%;
   padding: 0.25rem;
+  margin-top: 1.5rem;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0.6rem;
   display: block;
-  border-style: solid;
-  border-width: 0.07rem;
 `;
 
 export default ({ card }) => {
