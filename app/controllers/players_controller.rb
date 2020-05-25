@@ -9,14 +9,23 @@ class PlayersController < ApplicationController
 
   def show
     player = Player.find(params['player_id'])
-    player_resources = {
+    
+    resources = {
       brick: player.brick_count,
       grain: player.grain_count,
       lumber: player.lumber_count,
       ore: player.ore_count,
       wool: player.wool_count
     }
-    render json: { resources: player_resources }.to_json    
+
+    development_cards = Card.where(player_id: params['player_id']).where(played_at: nil)
+    
+    player_json = {
+      resources: resources,
+      development_cards: development_cards
+    }.to_json
+    
+    render json: player_json
   end
 
   def play_card
