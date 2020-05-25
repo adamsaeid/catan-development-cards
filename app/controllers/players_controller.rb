@@ -7,7 +7,7 @@ class PlayersController < ApplicationController
     render :index
   end
 
-  def resources
+  def show
     player = Player.find(params['player_id'])
     player_resources = {
       brick: player.brick_count,
@@ -16,7 +16,7 @@ class PlayersController < ApplicationController
       ore: player.ore_count,
       wool: player.wool_count
     }
-    render json: player_resources.to_json    
+    render json: { resources: player_resources }.to_json    
   end
 
   def play_card

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/players/:player_id/play', to: 'player_app#show'
   post '/players/:player_id/play_card', to: 'players#play_card'
-  get 'players/:player_id/resources', to: 'players#resources'
+  get 'players/:player_id', to: 'players#show'
   
   get '/players', to: 'players#index'
   post '/players/give', to: 'players#give'

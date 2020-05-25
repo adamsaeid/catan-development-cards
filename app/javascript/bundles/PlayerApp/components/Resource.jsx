@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { useSelector, useDispatch } from "react-redux";
-import { getResources } from '../actions/resourcesActions';
 import brick from '../images/brick.svg';
 import grain from '../images/grain.svg';
 import lumber from '../images/lumber.svg';

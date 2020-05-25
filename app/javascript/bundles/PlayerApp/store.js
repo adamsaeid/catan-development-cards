@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import resourcesReducer from './reducers/resourcesReducer';
+import playerReducer from './reducers/playerReducer';
 
-let store = createStore(resourcesReducer, applyMiddleware(thunk));
+let store = createStore(playerReducer, applyMiddleware(thunk));
 
 export default store;

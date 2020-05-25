@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components'
 import { useSelector, useDispatch } from "react-redux";
-import { getResources } from '../actions/resourcesActions';
+import { getPlayer } from '../actions/playerActions';
 import Resource from './Resource';
 
 const StyledResources = styled.div`
@@ -13,13 +13,14 @@ const StyledResources = styled.div`
 `;
 
 export default ({ playerId }) => {
-  const state = useSelector(state => state);
+  const state = useSelector(state => state.resources);
+  console.log(state)
   const dispatch = useDispatch();
 
 
   useEffect(() => {
     const interval = setInterval(() => {
-    dispatch(getResources(playerId));
+    dispatch(getPlayer(playerId));
     }, 1000);
     return () => clearInterval(interval);
   }, [])
