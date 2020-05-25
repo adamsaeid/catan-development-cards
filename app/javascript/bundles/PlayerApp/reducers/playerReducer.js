@@ -1,4 +1,9 @@
-import { PLAYER_LOADING, PLAYER_SUCCESS } from '../actions/playerActions';
+import { 
+  PLAYER_LOADING,
+  PLAYER_SUCCESS,
+  PLAY_DEVELOPMENT_CARD_LOADING,
+  PLAY_DEVELOPMENT_CARD_SUCCESS,
+} from '../actions/playerActions';
 
 const initialState = {
   resources: {
@@ -9,6 +14,7 @@ const initialState = {
     wool: 0,
   },
   loading: false,
+  playDevelopmentCardLoading: false,
 };
 
 const playerReducer = (state = initialState, action) => {
@@ -23,6 +29,16 @@ const playerReducer = (state = initialState, action) => {
         ...state,
         ...action.player,
         loading: false,
+      }
+    case PLAY_DEVELOPMENT_CARD_LOADING:
+      return {
+        ...state,
+        playDevelopmentCardLoading: true,
+      }
+    case PLAY_DEVELOPMENT_CARD_SUCCESS:
+      return {
+        ...state,
+        playDevelopmentCardLoading: false,
       }
     default:
       return state;

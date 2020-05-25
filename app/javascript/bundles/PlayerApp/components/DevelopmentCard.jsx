@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
 import styled from 'styled-components'
 
 import knight from '../images/knight.svg';
@@ -12,6 +13,7 @@ import chapel from '../images/chapel.svg';
 import monopoly from '../images/monopoly.svg';
 
 import Modal from 'react-modal';
+import { playDevelopmentCard } from '../actions/playerActions';
 
 const StyledDevelopmentCard = styled.div`
   width: 50%;
@@ -78,6 +80,20 @@ const CloseButton = styled.button`
   display: block;
   background-color: transparent;
   padding: 1rem 3rem;
+  margin-right: 2rem;
+`;
+
+const PlayButton = styled.button`
+  border-style: solid;
+  border-radius: 4rem;
+  border-color: #48a867;
+  background-color: #48a867;
+  color: white;
+  border-width: 0.4rem;
+  font-size: 3rem;
+  font-family: 'Arvo';
+  display: block;
+  padding: 1rem 3rem;
 `;
 
 const customStyles = {
@@ -92,7 +108,9 @@ const customStyles = {
   }
 };
 
-export default ({ card }) => {
+export default ({ playerId, card }) => {
+  const dispatch = useDispatch();
+
   const icon = (cardName) => {
     switch(cardName) {
       case 'Knight':
@@ -119,13 +137,18 @@ export default ({ card }) => {
   }
 
   const [modalIsOpen, setIsOpen] = useState(false);
-  function openModal() {
+
+  const openModal = () => {
     setIsOpen(true);
   }
 
-  function closeModal(){
-    console.log('closing the modal')
+  const closeModal = () => {
     setIsOpen(false);
+  }
+
+  const playCard = () => {
+    dispatch(playDevelopmentCard(playerId, card.id));
+    closeModal();
   }
 
   return (
@@ -151,6 +174,7 @@ export default ({ card }) => {
           <CardDescription>{card.description}</CardDescription>
           <ButtonContainer>
             <CloseButton onClick={closeModal}>Back</CloseButton>
+            <PlayButton onClick={playCard}>Play</PlayButton>
           </ButtonContainer>
         </CardInner>
       </Modal>

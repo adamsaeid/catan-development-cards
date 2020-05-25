@@ -11,14 +11,14 @@ const StyledDevelopmentCards = styled.div`
   margin-top: 5rem;
 `;
 
-export default () => {
+export default ({ playerId }) => {
   const developmentCards = useSelector(state => state.developmentCards);
 
   return (
     <StyledDevelopmentCards>
       { 
         developmentCards && developmentCards.map((card, index) => (
-          <DevelopmentCard key={index} card={card} />
+          <DevelopmentCard key={index} card={card} playerId={playerId}/>
         ))
       }
     </StyledDevelopmentCards>

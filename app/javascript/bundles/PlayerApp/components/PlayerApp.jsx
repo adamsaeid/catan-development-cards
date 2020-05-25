@@ -17,7 +17,7 @@ const PlayerApp = ({ name, id }) => (
   <Provider store={store}>
     <Name>{ name }</Name>
     <Resources playerId={id}/>
-    <DevelopmentCards />
+    <DevelopmentCards playerId={id} />
   </ Provider>
 );
 
