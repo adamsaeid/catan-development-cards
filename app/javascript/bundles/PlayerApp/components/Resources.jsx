@@ -12,14 +12,14 @@ const StyledResources = styled.div`
   flex-wrap: wrap;
 `;
 
-export default () => {
+export default ({ playerId }) => {
   const state = useSelector(state => state);
   const dispatch = useDispatch();
 
 
   useEffect(() => {
     const interval = setInterval(() => {
-    dispatch(getResources());
+    dispatch(getResources(playerId));
     }, 1000);
     return () => clearInterval(interval);
   }, [])

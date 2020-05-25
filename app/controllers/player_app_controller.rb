@@ -5,6 +5,6 @@ class PlayerAppController < ApplicationController
 
   def show
     player = Player.find(params['player_id'])
-    @player_app_props = { name: player.name }
+    @player_app_props = { id: player.id, name: player.name }
   end
 end
