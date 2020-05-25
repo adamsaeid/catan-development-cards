@@ -12,7 +12,7 @@ export const getPlayerSuccess = (player) => ({
 
 export const getPlayer = (playerId) => async (dispatch) => {
   dispatch(getPlayerLoading())
-  const response = await fetch(`https://gentle-fortress-04729.herokuapp.com/${playerId}`)
+  const response = await fetch(`https://gentle-fortress-04729.herokuapp.com/players/${playerId}`)
   const player = await response.json();
   dispatch(getPlayerSuccess(player));
 }
