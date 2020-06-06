@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/players/:player_id/play_card', to: 'players#play_card'
   get 'players/:player_id', to: 'players#show'
   
-  get '/players', to: 'players#index'
+  get "/#{ENV['HOST_CONTROLS_PATH']}", to: 'players#index'
   post '/players/give', to: 'players#give'
 
   post '/steal', to: 'players#steal'
