@@ -12,6 +12,8 @@ gem 'rails', '~> 5.2.1'
 gem "react_on_rails", "11.1.4"
 gem "webpacker", "~> 3"
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
